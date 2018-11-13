@@ -1,0 +1,12 @@
+{
+  "name": "ec6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jpmuniz/es6.git",
+  "author": "Joao Pedro <jpmuniz88@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/preset-env": "^7.1.5"
+  }
+}
