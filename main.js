@@ -1,165 +1,136 @@
-
 class Usuario {
-    constructor(senha, email) {
-        this.senha = senha
+    constructor(email, senha) {
         this.email = email
+        this.senha = senha
     }
 
-    mostraUsuarioo() {
-        return this.email + this.senha
+    isAdmin() {
+        return this.admin
     }
 }
-
 
 class Admin extends Usuario {
-
-    idAdmin() {
-        const isAdmin = true
-        return isAdmin
+    constructor() {
+        super()
+        this.admin = true
     }
 }
 
-const adm = new Admin(12345, "jpmuniz88@gmail.com")
+const adm = new Admin('jp@gmai.com', 1234)
+adm.admin = true
+console.log('ADM', adm.isAdmin())
 
-console.log(adm.mostraUsuarioo())
-console.log(adm.idAdmin())
+const user = new Usuario('jp@gmail.com', 1234)
+user.admin = false
+console.log('User', user.isAdmin())
 
 const usuarios = [
-    { nome: 'Diego', idade: 23, empresa: 'Rocketseat' },
-    { nome: 'Gabriel', idade: 15, empresa: 'Rocketseat' },
-    { nome: 'Lucas', idade: 30, empresa: 'Facebook' },
-];
+    {
+        nome: 'Joao Pedro', idade: 30, empresa: 'Gosat'
+    },
+    {
+        nome: 'Pedro Henrique', idade: 29, empresa: 'Dr suspensao'
+    },
+    {
+        nome: 'Luiz Fernando', idade: 24, empresa: 'Artista'
+    }
+]
 
 const idade = usuarios.map(usuario => {
     return usuario.idade
 })
 
-console.log(idade)
+console.log('map', idade)
 
-
-
-const above18WorkInRocketSeat = usuarios.filter(usuario => {
-    return usuario.idade > 18 && usuario.empresa === "Rocketseat"
+const workAtGosat = usuarios.filter(usuario => {
+    return usuario.idade > 29 && usuario.empresa === 'Gosat'
 })
 
-console.log(above18WorkInRocketSeat)
-
+console.log('filter', workAtGosat)
 
 const workAtGoogle = usuarios.find(usuario => {
-    return usuario.empresa === "Google"
+    return usuario.empresa === 'Google'
 })
 
-console.log(workAtGoogle)
+console.log('find', workAtGoogle)
 
-const ageX2 = usuarios.filter(usuario => {
+const maxAge50yearOld = usuarios.filter(usuario => {
     usuario.idade = usuario.idade * 2
     return usuario.idade < 49
 })
 
-console.log(ageX2)
+console.log('unindo acoes', maxAge50yearOld)
 
 const arr = [1, 2, 3, 4, 5];
-const newArr = arr.map(item => {
+const arrPlus10 = arr.map(item => {
     return item + 10;
-})
+});
 
-console.log(newArr)
+console.log(arrPlus10)
 
 const usuario = { nome: 'Joao Pedro', idade: 30 };
-
-const mostraIdade = ({ idade }) => {
-    return idade;
+const mostraIdade = (usuario) => {
+    return usuario.idade;
 }
 
-console.log(mostraIdade(usuario))
+console.log(mostraIdade(usuario));
 
-const mostraUsuario = (nome = 'Joao Pedro', idade = 30) => {
-    return ({ nome, idade })
+const nome = 'Joao Pedro'
+const age = 30
+
+const mostraUsuario = (nome = 'joao', age = 30) => {
+    return { nome, age }
 }
 
-console.log(mostraUsuario('Joao Pedro', 20))
-
-console.log(mostraUsuario(30))
-
-const promise = () => {
-    return new Promise(function (resolve, reject) {
-        return resolve();
-    })
-}
+console.log(mostraUsuario('Pedro', 29))
 
 const empresa = {
-    nome: 'cranio_developer',
+    name: 'Gosat',
     endereco: {
-        cidade: 'Belo Horizonte',
-        estado: 'MG',
+        rua: 'Fernandes Tourinho',
+        numero: 570
     }
-};
-
-const { nome, endereco: { cidade, estado } } = empresa
-console.log(nome)
-console.log(cidade)
-console.log(estado)
-
-const mostraInfo = ({ nome, idade }) => {
-    return `${nome} tem ${idade} anos.`;
 }
-console.log(mostraInfo({ nome: 'Joao Pedro', idade: 30 }))
 
-const arrayS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const { name, endereco: { rua, numero } } = empresa
 
-const [x, ...y] = arrayS
+console.log(name)
+console.log(rua)
+console.log(numero)
+
+function monstaInfo({ nome, idade }) {
+    return `${nome} tem ${idade} anos`
+}
+
+console.log(monstaInfo({ nome: 'joao', idade: 30 }))
+
+const arrS = [1, 2, 3, 4, 5, 6]
+
+const [x, ...y] = arrS
 
 console.log(x)
 console.log(y)
 
+
 function soma(...params) {
     return params.reduce((total, next) => total + next)
 }
+console.log(soma(1, 3))
 
-console.log(soma(1, 2))
-
-function show() {
-    const nome = "Joao Pedro"
-    const idade = 30
-    const profissao = "developer fullstack javaScript"
-
-    console.log(`${nome} tem ${idade} anos, profissao ${profissao}`)
-}
-
-show()
-
-function mudaNome() {
-
-    const usuario = {
-        nome: 'Joao Pedro',
+function reName(){
+    const usuariooo = {
+        nome: 'joao',
         idade: 30,
         endereco: {
-            cidade: 'Belo Horizonte',
-            uf: 'MG',
+            cidade: 'BH',
+            uf: 'BH',
             pais: 'Brasil',
         }
     };
-
-    const usuario1 = { ...usuario, nome: 'Pedro' }
-
-    console.log(usuario1)
-
+    
+    
+    const usuario4 = {...usuariooo, nome:'Pedro'} 
+    console.log(usuario4)
 }
 
-mudaNome()
-
-function shortObject(){
-    const nome ="Joao Pedro"
-    const idade = 30
-
-    const user ={
-        nome,
-        idade,
-        profissao:"Web developer"
-    }
-
-    console.log(user)
-
-}
-
-shortObject()
+reName()
